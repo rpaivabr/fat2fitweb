@@ -1,0 +1,20 @@
+<h3>Escolha a meta:</h3>
+<form [formGroup]="configForm" (submit)="saveConfig($event)">
+    <mat-radio-group aria-label="Select an option" (change)="changeOption($event)">
+        <mat-radio-button value="weight" [checked]="isWeight">Por peso</mat-radio-button>
+        <mat-radio-button value="date" [checked]="!isWeight">Por data</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field *ngIf="isWeight" appearance="fill">
+        <mat-label>Peso Final Desejado</mat-label>
+        <input matInput formControlName="weight" type="number">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!isWeight" appearance="fill">
+        <mat-label>Data Final Desejada</mat-label>
+        <input matInput formControlName="date" type="date">
+    </mat-form-field>
+
+    <br />
+    <button mat-raised-button color="primary">Salvar</button>
+</form>
